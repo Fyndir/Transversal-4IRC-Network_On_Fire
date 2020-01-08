@@ -42,5 +42,13 @@ Le but de cette brique est de recreer l'environnement informatique des casernes 
 ### Fonctionnement
 
 Les technologies mis en oeuvre sur la backbone :
-  - **OSPF** : retourne l'ensemble des positions des casernes disponibles dans la base de données
-  - **BGP** : retourne les IDs, les positions et les intensités (cad la gravité de l'incendie, 0 étant associé à un bâtiment sain) de chaque position susceptible d'être enflammée
+  - **configuration IP** : 
+  - **OSPF** : 
+  - **BGP** :
+    - **IBGP**:
+    - **EBGP**:
+    - **peer-group**:
+    - **route reflector**:
+  - **ACL**
+   
+  
