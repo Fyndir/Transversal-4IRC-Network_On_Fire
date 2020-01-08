@@ -41,7 +41,7 @@ Le but de cette brique est de recreer l'environnement informatique des casernes 
 
 ### Fonctionnement
 
-Les technologies mis en oeuvre sur la backbone :
+Les technologies réseau mis en oeuvre sur les routeurs :
   - **configuration IP** : 
   - **OSPF** : 
   - **BGP** :
@@ -49,6 +49,16 @@ Les technologies mis en oeuvre sur la backbone :
     - **EBGP**:
     - **peer-group**:
     - **route reflector**:
-  - **ACL**
-   
-  
+  - **ACL**:
+  - **routage**:
+  - **VRRP**:
+ 
+ Les technologies mis en oeuvre sur l'infrastructure virtuel : 
+  - **Serveurs** : l'intégralité des serveurs de production sont externalisés dans le cloud Azure
+  - **DHCP** : seul serveur local, présent dans la caserne "data-center", et servant a occtroyé des IP au hôte dans tout les LAN
+  - **Client** : VM MXLinux sous VirtualBox
+
+ Les technologies de templating des LAN de casernes :
+  - **Template JINJA**:
+  - **Fichier Python**:
+  - **Fichier DATA YAML**: fichier dictionnaire de données à remplir par l'administrateur réseau avec les informations nécessaire au déploiement
