@@ -1,0 +1,1 @@
+le fichier data.yaml est à remplir par l'admin réseau pour tout nouveau déploiement de LAN caserne.
