@@ -1,0 +1,214 @@
+DC-R1#sh run
+Building configuration...
+
+Current configuration : 2796 bytes
+!
+! Last configuration change at 16:30:20 UTC Wed Dec 18 2019
+upgrade fpd auto
+version 15.1
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+no service dhcp
+!
+hostname DC-R1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+ip source-route
+no ip icmp rate-limit unreachable
+ip cef
+!
+
+DC-R1#sh run
+Building configuration...
+
+Current configuration : 2796 bytes
+!
+! Last configuration change at 16:30:20 UTC Wed Dec 18 2019
+upgrade fpd auto
+version 15.1
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+no service dhcp
+!
+hostname DC-R1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+ip source-route
+no ip icmp rate-limit unreachable
+ip cef
+!
+!
+!
+!
+!
+no ip domain lookup
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+crypto pki token default removal timeout 0
+!
+!
+!
+redundancy
+!
+!
+ip tcp synwait-time 5
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 4.4.4.4 255.255.255.255
+!
+interface FastEthernet0/0
+ ip address 172.16.9.1 255.255.255.252
+ duplex half
+!
+interface FastEthernet1/0
+ ip address 172.16.8.1 255.255.255.252
+ duplex auto
+ speed auto
+!
+interface FastEthernet1/1
+ ip address 164.4.1.254 255.255.255.0
+ duplex auto
+ speed auto
+!
+interface FastEthernet2/0
+ ip address 172.16.6.1 255.255.255.252
+ duplex auto
+ speed auto
+!
+interface FastEthernet2/1
+ ip address 172.16.7.1 255.255.255.252
+ duplex auto
+ speed auto
+!
+interface FastEthernet3/0
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+!
+interface FastEthernet3/1
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+!
+interface FastEthernet4/0
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+!
+interface FastEthernet4/1
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+!
+interface FastEthernet5/0
+ no ip address
+ shutdown
+ duplex half
+!
+interface FastEthernet6/0
+ ip address dhcp
+ ip access-group TRAFFIC_IN in
+ ip access-group TRAFFIC_OUT out
+ duplex half
+!
+router bgp 65001
+ bgp log-neighbor-changes
+ network 0.0.0.0
+ network 164.4.1.0 mask 255.255.255.0
+ neighbor 172.16.8.2 remote-as 100
+ neighbor 172.16.8.2 ebgp-multihop 2
+ neighbor 172.16.9.2 remote-as 100
+ neighbor 172.16.9.2 ebgp-multihop 2
+ neighbor 192.168.10.3 remote-as 100
+ neighbor 192.168.10.3 ebgp-multihop 2
+ neighbor 192.168.10.3 update-source Loopback0
+!
+ip forward-protocol nd
+no ip http server
+no ip http secure-server
+!
+!
+ip route 0.0.0.0 0.0.0.0 10.150.1.189
+ip route 192.168.10.3 255.255.255.255 172.16.6.2
+ip route 192.168.10.3 255.255.255.255 172.16.7.2
+!
+ip access-list extended TRAFFIC_IN
+ permit udp 192.168.65.0 0.0.0.255 any eq bootps
+ permit udp 192.168.65.0 0.0.0.255 any eq bootpc
+ permit udp host 10.150.0.1 any eq domain
+ permit ip 192.168.65.0 0.0.0.255 any
+ permit ip 10.150.0.0 0.0.255.255 any
+ permit ip any any
+ip access-list extended TRAFFIC_OUT
+ permit ip any any
+!
+logging esm config
+no cdp log mismatch duplex
+!
+!
+!
+!
+!
+!
+control-plane
+!
+!
+!
+mgcp profile default
+!
+!
+!
+gatekeeper
+ shutdown
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+ stopbits 1
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+ stopbits 1
+line vty 0 4
+ login
+ transport input all
+!
+end
+
+DC-R1#
