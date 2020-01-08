@@ -1,0 +1,16 @@
+{% for interface in interfaces %}
+interface {{ interface.name }}
+	description {{ interface.description }}
+	ip address {{ interface.ip_address }}
+	{%- if interface.description == 'Downlink to LAN' %}
+	ip helper-address {{helper_address}}{% endif %}
+	no shutdown
+{% endfor %}
+
+ip route {{route.ip_route}} {{route.interface_route}}
+
+router bgp {{bgp.local_as}}
+	network {{bgp.network}}
+	neighbor {{bgp.neighbor}} remote-as {{bgp.remote_as}}
+	neighbor {{bgp.neighbor}} ebgp-multihop 2
+	neighbor {{bgp.neighbor}} update-source {{bgp.update_source}}
