@@ -46,7 +46,7 @@ Les technologies réseau mis en oeuvre sur les routeurs :
   - **OSPF** : Open Shortest Path First, un protocol de routage mis en place dans la backbone et ne servant qu'a annoncer les différents sous-réseau de l'Autonomous System BGP. Les interfaces étant connectés à un autre AS sont passé en passive et ne participerons pas à l'OSPF.
   - **BGP** : Border Gateway Protocol est un protocol de routage permettant une forte redondance 
     - **IBGP**: les voisins IBGP sont les routeur du même AS, on utilise l'attribut next-hop self et update-source loopback
-    - **EBGP**: les voisins EBGP sont les routeurs d'un autre AS, dans notre cas le ou les routeur des casernes. On utilise l'attribut multihop et remote-private AS
+    - **EBGP**: les voisins EBGP sont les routeurs d'un autre AS, dans notre cas le ou les routeur des casernes. On utilise l'attribut multihop et remote-private AS pour la balance de charge sur des interconnexion avec multiple lien et pour palier au problème d'un AS diviser sur plusieurs LAN.
     - **peer-group**: un "objet" servant à factorier le code BGP via un template, j'ai définis un template EBGP et IBGP contennant les commandes habituels.
     - **route reflector**: route reflector est une technologie permetant de mettre en place un "serveur" BGP et donc de ne pas recourir à une topologie full mesh (en IBGP une route IBGP n'est pas retranmise pour éviter les boucle), on factorise le code correspondant à BGP.
   - **ACL**: Filtrage du traffic entrant et sortant sur internet et sur le LAN datacenter via des règles définis
