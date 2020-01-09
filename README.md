@@ -43,22 +43,22 @@ Le but de cette brique est de recreer l'environnement informatique des casernes 
 
 Les technologies réseau mis en oeuvre sur les routeurs :
   - **configuration IP** : 
-  - **OSPF** : 
+  - **OSPF** : Open Shortest Path First, un protocol de routage mis en place dans la backbone et ne servant qu'a annoncer les différents sous-réseau de l'Autonomous System BGP. Les interfaces étant connectés à un autre AS sont passé en passive et ne participerons pas à l'OSPF.
   - **BGP** :
     - **IBGP**:
     - **EBGP**:
     - **peer-group**:
     - **route reflector**:
   - **ACL**:
-  - **routage**:
-  - **VRRP**:
+  - **routage**: 
+  - **VRRP**: Virtual Rouder Redondancy Protocol, mis en place sur le LAN 2, il permet d'assurer une redondance des routeurs via une adresse IP virtuel unique connus des hôtes.
  
  Les technologies mis en oeuvre sur l'infrastructure virtuel : 
-  - **Serveurs** : l'intégralité des serveurs de production sont externalisés dans le cloud Azure
-  - **DHCP** : seul serveur local, présent dans la caserne "data-center", et servant a occtroyé des IP au hôte dans tout les LAN
-  - **Client** : VM MXLinux sous VirtualBox
+  - **Serveurs** : L'intégralité des serveurs de production sont externalisés dans le cloud Azure : simulation & emergency_manager
+  - **DHCP** : Seul serveur local, présent dans la caserne "data-center", et servant à octroyer des IP dynamiquement aux hôtes dans tout les LAN des casernes.
+  - **Client** : VM MXLinux sous VirtualBox, elle peux joindre les autres casernes et sortir sur internet pour accèder a l'emergency manager.
 
  Les technologies de templating des LAN de casernes :
-  - **Template JINJA**:
-  - **Fichier Python**:
-  - **Fichier DATA YAML**: fichier dictionnaire de données à remplir par l'administrateur réseau avec les informations nécessaire au déploiement
+  - **Template JINJA**: Fichier de template faisant appel aux variables définis dans le fichier data.yaml. 
+  - **Fichier Python**: Fichier de compilation et de "rendu" du template.
+  - **Fichier DATA YAML**: Fichier dictionnaire de données à remplir par l'administrateur réseau avec les informations nécessaire au déploiement.
