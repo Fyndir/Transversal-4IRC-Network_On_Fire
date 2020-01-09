@@ -63,3 +63,4 @@ Les technologies réseau mis en oeuvre sur les routeurs :
   - **Fichier Python**: Fichier de compilation et de "rendu" du template.
   - **Fichier DATA YAML**: Fichier dictionnaire de données à remplir par l'administrateur réseau avec les informations nécessaire au déploiement.
 
+![schéma_réseau](https://github.com/Tenebry/Network_On_Fire/blob/master/Capture.PNG)
