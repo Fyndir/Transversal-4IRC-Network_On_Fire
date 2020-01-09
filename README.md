@@ -62,3 +62,4 @@ Les technologies réseau mis en oeuvre sur les routeurs :
   - **Template JINJA**: Fichier de template faisant appel aux variables définis dans le fichier data.yaml. 
   - **Fichier Python**: Fichier de compilation et de "rendu" du template.
   - **Fichier DATA YAML**: Fichier dictionnaire de données à remplir par l'administrateur réseau avec les informations nécessaire au déploiement.
+
